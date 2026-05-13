@@ -1,0 +1,7 @@
+{
+  "name": "Aura",
+  "short_name": "Aura",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": []
+}

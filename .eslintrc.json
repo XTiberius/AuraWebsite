@@ -1,0 +1,10 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "react/no-unknown-property": [
+      "error",
+      { "ignore": ["cmdk-input-wrapper", "toast-close"] }
+    ],
+    "@next/next/no-img-element": "off"
+  }
+}
