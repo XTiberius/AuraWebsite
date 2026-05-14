@@ -17,14 +17,14 @@ export default function HeroSection() {
         style={{ backgroundImage: `url(${TOPO_URL})` }} />
       
 
-      {/* Purple radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-primary/8 blur-[150px]" />
+      {/* Purple radial glow — lighter blur on small screens */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100vw,900px)] md:w-[900px] h-[min(100vw,900px)] md:h-[900px] rounded-full bg-primary/8 blur-[72px] md:blur-[120px] lg:blur-[150px]" />
       
       {/* Red accent glow */}
-      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-red-600/5 blur-[100px]" />
+      <div className="absolute top-1/4 right-1/4 w-[200px] md:w-[300px] h-[200px] md:h-[300px] rounded-full bg-red-600/5 blur-[64px] md:blur-[100px]" />
       
       {/* Blue accent glow */}
-      <div className="absolute bottom-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-blue-600/5 blur-[120px]" />
+      <div className="absolute bottom-1/3 left-1/4 w-[240px] md:w-[400px] h-[240px] md:h-[400px] rounded-full bg-blue-600/5 blur-[72px] md:blur-[120px]" />
 
       {/* Metallic grain overlay */}
       <div className="absolute inset-0 opacity-[0.02]" style={{

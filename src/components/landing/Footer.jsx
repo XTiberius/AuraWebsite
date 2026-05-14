@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const LOGO_URL = '/assets/logo.png';
 
@@ -8,7 +9,14 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-3">
-            <img src={LOGO_URL} alt="AURA" className="h-6 w-auto opacity-60" />
+            <Image
+              src={LOGO_URL}
+              alt="AURA"
+              width={120}
+              height={36}
+              className="h-6 w-auto opacity-60"
+              sizes="120px"
+            />
             <span className="font-heading text-sm font-semibold tracking-[0.2em] text-muted-foreground">
               AURA
             </span>

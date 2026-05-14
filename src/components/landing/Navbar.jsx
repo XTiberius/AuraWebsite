@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const LOGO_URL = '/assets/logo.png';
 const TOPO_URL = '/assets/topo.png';
@@ -9,8 +10,17 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20);
+        ticking = false;
+      });
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -30,14 +40,22 @@ export default function Navbar() {
         />
         <div className={`absolute inset-0 transition-all duration-500 ${
           scrolled
-            ? 'bg-background/80 backdrop-blur-xl border-b border-border/30'
+            ? 'bg-background/80 backdrop-blur-md border-b border-border/30 md:backdrop-blur-xl'
             : 'bg-transparent'
         }`} />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 flex items-center justify-between">
         <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-3 group">
-          <img src={LOGO_URL} alt="AURA" className="h-8 w-auto transition-transform duration-300 group-hover:scale-105" />
+          <Image
+            src={LOGO_URL}
+            alt="AURA"
+            width={160}
+            height={48}
+            priority
+            className="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
+            sizes="160px"
+          />
           <span className="font-heading text-xl font-bold tracking-[0.2em] text-foreground">
             AURA
           </span>
